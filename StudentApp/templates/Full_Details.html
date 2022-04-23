@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FullDetails</title>
+    {% load static %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+<header class="p-3 bg-dark text-white">
+
+    <div class="container " >
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-md-2" width="0" height="0" role="img" aria-label="Bootstrap">
+              <h2 class="text text-light">Student</h2><h4 class="text text-warning">INFO</h4>
+          </svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-0 justify-content-center mb-md-0" style="text-align: center">
+          <li><a href="/" class="nav-link px-2 text-light"><button class="btn btn-dark">Home</button></a></li>
+          <li><a href="/Admin_Page" class="nav-link px-2 text-white"><button class="btn btn-dark">Admin Page</button></a></li>
+          <li><a href="/Add_Students" class="nav-link px-2 text-white"><button class="btn btn-dark">Add Students</button></a></li>
+            <li><a href="/View_Students" class="nav-link px-2 text-white"><button class="btn btn-dark">ViewStudents</button></a></li>
+        </ul>
+        <div class="text-end">
+            <a href="/logout"><button type="button" class="btn btn-outline-dark btn-light">LogOut</button></a>
+          <a href="/User_pro"><button type="button" class="btn btn-outline-dark btn-warning">{{ Userdata.username }}</button></a>
+        </div>
+      </div>
+    </div>
+</header>
+
+
+<br><b></b>
+<div class="container">
+    <div class="row">
+        <h2 style="text-align: center" class="text text-dark ">{{ data.Name.upper }} Profile</h2><br><br><br>
+        <form action="" method="POST" class="form-control-lg" style="text-align: center">
+
+                {% csrf_token %}
+                <img src="{% static data.Picture %}" alt="null" width="200" height="200" class="border border-5" ><br><br>
+        </form>
+        <div class="col-md-6 border" >
+           <form action="" method="POST" class="form-control-lg" style="text-align: center;border: #1a1e21">
+                {% csrf_token %}
+                <p class="text-dark border">Student Name : {{data.Name}}</p>
+                <p class="text-dark border">Roll : {{data.Roll}}</p>
+                <p class="text-dark border">Section : {{data.Section}}</p>
+                <p class="text-dark border">Semester : {{data.Semester}}</p>
+               <p class="text-dark border">Gender : {{data.Gender}}</p>
+
+
+            </form>
+        </div>
+        <div class="col-md-6 border">
+            <form action="" method="POST" class="form-control-lg" style="text-align: center">
+                {% csrf_token %}
+
+                <p class="text-dark border">Address : {{data.Address}}</p>
+                <p class="text-dark border">Father Name : {{data.Father_Name}}</p>
+                <p class="text-dark border">Mother_Name : {{data.Mother_Name}}</p>
+                <p class="text-dark border">Address : {{data.Address}}</p>
+                <p class="text-dark border">Contact : {{data.Contact}}</p>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" style="text-align: center">
+            <br>
+            <a href="/Student_Update/{{ data.Id }}">
+                <button type="submit" value="Update" class="btn btn-outline-light btn-dark btn-lg">Update</button>
+            </a>
+            {% if super %}
+            <a href="/Delete_Student/{{ data.Id }}">
+                <button type="submit" value="Delete" class="btn btn-outline-light btn-danger btn-lg">Delete</button>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<br><br><br>
+<footer>
+<div class="bg-dark" >
+    <br><br> <br><br>
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-3">
+                <h4 class="text-light">Quick Links</h4>
+                <br>
+                <a href="/"><p ><h6 class="text-light">Home</h6></p></a>
+                <a href="/About_Us"><p ><h6 class="text-light">About</h6></p></a>
+                <a href="/login"><p > <h6 class="text-light">Admin Login</h6></p></a>
+                <a href="/Contact_Us"><p > <h6 class="text-light">Con Tact</h6></p></a>
+                <a><p></p></a>
+            </div>
+            <div class="col-md-5" >
+                <img src="{% static 'img/img3.png' %}" width="80%">
+
+            </div>
+            <div class="col-md-4">
+                <br>
+                <p><h6 class="text-light"><svg width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+</svg>&nbsp;Chittagong Polytechnic Institute<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Technical Mor,2 No Gate<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chittagong</h6></p>
+                <p><h6 class="text-light"><svg width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+            </svg>&nbsp;&nbsp;jobayer1116@gmail.com</h6></p>
+                <p><h6 class="text-light"><svg width="16" height="16" fill="currentColor" class="bi bi-phone" viewBox="0 0 16 16">
+  <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"/>
+  <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+</svg>&nbsp;&nbsp;01870267921</h6></p>
+
+            </div>
+        </div>
+
+    </div>
+    <br><br> <br><br>
+    <div class="row">
+        <p style="text-align: center">-------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+    </div>
+    <div class="row">
+        <p class="text-light bi bi-geo-alt-fill" style="text-align: center">
+  Copyright @ 2022 SIS. All rights reserved.</p>
+
+    </div>
+
+</div>
+
+</footer>
+
+</body>
+</html>

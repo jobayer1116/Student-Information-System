@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result_import</title>
+    {% load static %}
+</head>
+<body>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="text" name="About">
+    <input type="file" name="file">
+    <input type="submit" value="Show">
+</form>
+</body>
+</html>
